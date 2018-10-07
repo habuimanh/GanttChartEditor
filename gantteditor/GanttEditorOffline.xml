@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<widget id="gantteditor.widget.GanttEditorOffline" needsEntityContext="true" offlineCapable="true" xmlns="http://www.mendix.com/widget/1.0/">
+    <name>GanttEditor (Offline)</name>
+    <description>The description of this widget.</description>
+    <icon></icon> 
+    <properties>
+         <property key="projectName" type="attribute" required="false">
+            <caption>Project Name</caption>
+            <category>1) Project</category>
+            <description>Name of project</description>
+            <attributeTypes>
+                <attributeType name="String"/>
+            </attributeTypes>
+        </property> 
+        <property key="projectShowCurrentDate" type="boolean" defaultValue="false">
+            <caption>Show current date</caption>
+            <category>1) Project</category>
+            <description>show current date in project</description>
+        </property> 
+        <property key="projectExcludeWeekend" type="boolean" defaultValue="true">
+            <caption>Exclude weekend</caption>
+            <category>1) Project</category>
+            <description>skip weekends in calculating duration</description>
+        </property> 
+        <property key="projectReadonly" type="attribute" required="false">
+            <caption>Readonly mode</caption>
+            <category>1) Project</category>
+            <description>Turn on/off readonly mode</description>
+            <attributeTypes>
+                <attributeType name="Boolean"/>
+            </attributeTypes>
+        </property> 
+        <property key="task" type="string">
+            <caption>Task</caption>
+            <category>2) Task</category>
+            <description>Task</description>
+        </property>
+        <property key="taskName" type="string">
+            <caption>Task Name</caption>
+            <category>2) Task</category>
+            <description>Name of task</description>
+        </property>
+        <property key="taskStartDate" type="string">
+            <caption>Task StartDate</caption>
+            <category>2) Task</category>
+            <description>Start date of task</description>
+        </property>
+        <property key="taskDescription" type="string">
+            <caption>Task Desciption</caption>
+            <category>2) Task</category>
+            <description>Description of task</description>
+        </property>
+        <property key="taskSortOrder" type="string">
+            <caption>Task SortOrder</caption>
+            <category>2) Task</category>
+            <description>SortOrder of the Card</description>
+        </property> 
+        <property key="taskDuration" type="string">
+            <caption>Task Duration</caption>
+            <category>2) Task</category>
+            <description>Duration of task (day scale)</description>
+        </property>
+        <property key="taskProgress" type="string">
+            <caption>Task Progress</caption>
+            <category>2) Task</category>
+            <description>Progress of task</description>
+        </property>
+        <property key="taskStatus" type="string" required="false">
+            <caption>Task Status</caption>
+            <category>2) Task</category>
+            <description>Status of task</description>
+        </property>
+        <property key="taskColor" type="string" required="false">
+            <caption>Task Color</caption>
+            <category>2) Task</category>
+            <description>valid CSS value for background color of task</description>
+        </property>
+        <property key="taskEditForm" type="form" required="false">
+            <caption>Task edit form</caption>
+            <category>2) Task</category>
+            <description>Task edit form</description>
+        </property>
+        <property key="link" type="string">
+            <caption>Link</caption>
+            <category>3) Link</category>
+            <description>Link</description>
+        </property>
+        <property key="linkType" type="string" >
+            <caption>Link Type</caption>
+            <category>3) Link</category>
+            <description>Type of task</description>
+        </property>
+        <property key="linkColor" type="string" required="false">
+            <caption>Link Color</caption>
+            <category>3) Link</category>
+            <description>Color of link</description>
+        </property>
+        <property key="linkEditForm" type="form" required="false">
+            <caption>Link edit form</caption>
+            <category>3) Link</category>
+            <description>Link edit form</description>
+        </property>
+        <property key="linkProjectAssociation" type="string" required="true">
+            <caption>Link-Project relation</caption>
+            <category>3) Link</category>
+            <description>relation between link and the project it belongs to</description>
+        </property>
+        <property key="linkSourceAssociation" type="string" required="true">
+            <caption>Link-Source relation</caption>
+            <category>3) Link</category>
+            <description>relation between link and its source</description>
+        </property>
+        <property key="linkTargetAssociation" type="string" required="true">
+            <caption>Link-Target relation</caption>
+            <category>3) Link</category>
+            <description>relation between link and its target</description>
+        </property>
+        <property key="taskProjectAssociation" type="string" required="true">
+            <caption>Task-Project relation</caption>
+            <category>2) Task</category>
+            <description>relation between task and the project it belongs to</description>
+        </property>
+        <property key="taskParentAssociation" type="string" required="true">
+            <caption>Task-Parent relation</caption>
+            <category>2) Task</category>
+            <description>relation between task and its parent (task)</description>
+        </property>
+        <property key="customProgressTemplate" required="false" type="string" multiline="true">
+            <caption>Progress Text Template</caption>
+            <category>4) Task Customization</category>
+            <description>Use ${} to represent the progress text in this string. Note that this string, except for the placements, is interpreted as HTML</description>
+        </property>
+        <property key="customTaskTextTemplate" type="string" required="false" multiline="true">
+            <caption>Task Text Template</caption>
+            <category>4) Task Customization</category>
+            <description>Use ${VARIABLE_NAME} to have the attribute value inserted in this string. Note that this string, except for the replacements, is interpreted as HTML. </description>
+        </property>
+        <property type="object" key="templateVariables" required="false" isList="true">
+            <caption>Template Variable</caption>
+            <category>4) Task Customization</category>
+            <description/>
+            <properties>
+                <property type="string" key="name" required="true">
+                    <caption>Variable name</caption>
+                    <category>Task text template</category>
+                    <description>represent for this attribute in 'Task Text Template'</description>
+                </property>
+                <property type="string" key="attribute" required="true">
+                    <caption>Attribute path</caption>
+                    <category>Task text template</category>
+                    <description>Value of this attribute will be used to replace ${VARIABLE_NAME}, defined in 'Task Text Template'</description>
+                </property>
+                <property type="enumeration" key="type" defaultValue="string">
+                    <caption>Attribute type</caption>
+                    <category>Task text template</category>
+                    <description>Attribute type </description>
+                    <enumerationValues>
+                        <enumerationValue key="string">String</enumerationValue>
+                        <enumerationValue key="number">Number</enumerationValue>
+                        <enumerationValue key="dateTime">Date and Time</enumerationValue>
+                    </enumerationValues>
+                </property>
+            </properties>
+        </property>
+        <property type="string" key="customFinishFinishLinkColor" required="false">
+            <caption>Finish-Finish Link Color</caption>
+            <category>5) Link Customization</category>
+            <description>Custom color to Finish-Finish links</description>
+        </property>
+        <property type="string" key="customFinishStartLinkColor" required="false">
+            <caption>Finish-Start Link Color</caption>
+            <category>5) Link Customization</category>
+            <description>Custom color to Finish-Start links</description>
+        </property>
+        <property type="string" key="customStartStartLinkColor" required="false">
+            <caption>Start-Start Link Color</caption>
+            <category>5) Link Customization</category>
+            <description>Custom color to Start-Start links</description>
+        </property>
+        <property type="string" key="customStartFinishLinkColor" required="false">
+            <caption>Start-Finish Link Color</caption>
+            <category>5) Link Customization</category>
+            <description>Custom color to Start-Finish links</description>
+        </property>
+        <property type="object" key="customGridColumn" required="false" isList="true">
+            <caption>Grid Column</caption>
+            <category>6) Grid Customization</category>
+            <description/>
+            <properties>
+                <property type="string" key="label" required="false">
+                    <caption>Label</caption>
+                    <category>Data source</category>
+                    <description>Header of column</description>
+                </property>
+                <property type="string" key="attribute" required="true">
+                    <caption>Attribute</caption>
+                    <category>Data source</category>
+                    <description> Attribute of task to display in column </description>
+                </property>
+                <property type="string" key="template" required="false" multiline="true">
+                    <caption>Template</caption>
+                    <category>Data source</category>
+                    <description>Use ${} to represent the attribute value in this string. Note that this string, except for the placements, is interpreted as HTML</description>
+                </property>
+                <property type="enumeration" key="type" defaultValue="string">
+                    <caption>Type</caption>
+                    <category>Data source</category>
+                    <description>Attribute type</description>
+                    <enumerationValues>
+                        <enumerationValue key="string">String</enumerationValue>
+                        <enumerationValue key="number">Number</enumerationValue>
+                        <enumerationValue key="dateTime">Date and Time</enumerationValue>
+                    </enumerationValues>
+                </property>
+                <property type="integer" key="width" defaultValue="100">
+                    <caption>Width</caption>
+                    <category>Styling</category>
+                    <description></description>
+                </property>
+                <property type="enumeration" key="align" defaultValue="left">
+                    <caption>Align</caption>
+                    <category>Styling</category>
+                    <description></description>
+                    <enumerationValues>
+                        <enumerationValue key="center">Center</enumerationValue>
+                        <enumerationValue key="left">Left</enumerationValue>
+                        <enumerationValue key="right">Right</enumerationValue>
+                    </enumerationValues>
+                </property>
+            </properties>
+        </property>
+        <property key="customRowHeight" type="integer" defaultValue="35">
+            <caption>Row height</caption>
+            <category>6) Grid Customization</category>
+            <description/>
+        </property>
+        <property type="boolean" key="menuEditTask" defaultValue="true">
+            <caption>Edit</caption>
+            <category>7) Context Menu Customization</category>
+            <description/>
+        </property>
+        <property type="boolean" key="menuDeleteTask" defaultValue="true">
+            <caption>Delete</caption>
+            <category>7) Context Menu Customization</category>
+            <description/>
+        </property>
+    </properties>
+</widget>

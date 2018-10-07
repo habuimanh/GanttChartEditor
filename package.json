@@ -1,0 +1,23 @@
+{
+  "name": "gantt-editor-widget",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/dojo": "^1.9.38",
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-typescript": "^3.2.2",
+    "gulp-webpack": "^1.5.0",
+    "gulp-zip": "^4.0.0",
+    "mendix-client": "https://github.com/FlockOfBirds/Mendix-client-typing/archive/7.1.0.tar.gz",
+    "run-sequence": "^2.1.0",
+    "typescript": "^2.4.2",
+    "webpack": "^3.5.5"
+  }
+}
