@@ -1,13 +1,13 @@
 # GanttChartEditor
 This code used for "Gantt Editor Application" by using GanttChartJS.
 
-# Overview
+### Overview
 
 This is the code for [this](https://appstore.home.mendix.com/link/app/93601/SCH/GanttEditor) application on Mendix Appstore by using GanttChartJS.
 
 ![Image](images/gaantDemo.png)
 
-# Description
+### Description
 
 As one of essential component for all planning apps, Gantt Editor is used for presenting and scheduling your project, in which tasks are represented by bars and dependencies between them are modelled by lines connecting those bars.
 
@@ -35,12 +35,12 @@ A task, by default, has name, description, start date, duration and progress. Yo
 
  - Finish to finish: A task must finish before the other can finish
 
-# Typical usage scenario
+### Typical usage scenario
 
  - Software project development
  - Business planning
 
-# Features and limitations
+### Features and limitations
 
  - Easily create task and dependencies
  - Support drag/drop task to change task’s parent
@@ -49,10 +49,10 @@ A task, by default, has name, description, start date, duration and progress. Yo
  - Easy to change your chart’s appearance with many customizations
  - Support a large amount of tasks
 
-# Dependencies
+### Dependencies
  - Mendix 7.6.0 or later
 
-# Configuration
+### Configuration
 
 The domainmodel will look like this:
 
